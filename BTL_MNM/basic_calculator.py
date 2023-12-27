@@ -130,39 +130,39 @@ def divide():
 # Tạo cửa sổ chính
 root = tk.Tk()
 root.title("Máy tính cơ bản")
-
+root.config(bg='lightblue')
 # Tạo các thành phần giao diện
-label_num1 = tk.Label(root, text="Number 1:")
+label_num1 = tk.Label(root, text="Number 1:",bg='lightblue')
 label_num1.grid(row=0, column=0)
 entry_num1 = tk.Entry(root)
 entry_num1.grid(row=0, column=1)
 
-label_num2 = tk.Label(root, text="Number 2:")
+label_num2 = tk.Label(root, text="Number 2:",bg='lightblue')
 label_num2.grid(row=1, column=0)
 entry_num2 = tk.Entry(root)
 entry_num2.grid(row=1, column=1)
 
-button_open_file = tk.Button(root, text="Chọn tệp Word", command=open_word_file)
+button_open_file = tk.Button(root, text="Chọn tệp Word", command=open_word_file,bg='lightgreen')
 button_open_file.grid(row=0, column=2)
-button_open_file = tk.Button(root, text="Tính toán Word", command=save_word_file)
+button_open_file = tk.Button(root, text="Tính toán Word", command=save_word_file,bg='lightgreen')
 button_open_file.grid(row=1, column=2)
 
-button_add = tk.Button(root, text="Cộng", command=add)
+button_add = tk.Button(root, text="Cộng", command=add,bg='lightgreen')
 button_add.grid(row=2, column=0)
 
-button_subtract = tk.Button(root, text="Trừ ", command=subtract)
+button_subtract = tk.Button(root, text="Trừ ", command=subtract,bg='lightgreen')
 button_subtract.grid(row=2, column=1)
 
-button_multiply = tk.Button(root, text="Nhân", command=multiply)
+button_multiply = tk.Button(root, text="Nhân", command=multiply,bg='lightgreen')
 button_multiply.grid(row=3, column=0)
 
-button_divide = tk.Button(root, text="Chia", command=divide)
+button_divide = tk.Button(root, text="Chia", command=divide,bg='lightgreen')
 button_divide.grid(row=3, column=1)
 
-label_result = tk.Label(root, text="Kết quả: ")
+label_result = tk.Label(root, text="Kết quả: ",bg='lightblue')
 label_result.grid(row=4, column=0, columnspan=2)
 
-label_word = tk.Label(root, text="Dữ liệu từ file word:")
+label_word = tk.Label(root, text="Dữ liệu từ file word:",bg='lightblue')
 label_word.grid(row=5, column=0, columnspan=2)
 
 text_widget = scrolledtext.ScrolledText(root, width=40, height=10)
