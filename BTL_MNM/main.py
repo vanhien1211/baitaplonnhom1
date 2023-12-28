@@ -9,10 +9,6 @@ def open_analysis_app():
     # Chạy mã code giao diện ứng dụng hỗ trợ giải tích từ một tệp riêng
     subprocess.call(["python", "analysis_app.py"])
 
-def open_geometry_app():
-    # Chạy mã code giao diện ứng dụng hỗ trợ hình học từ một tệp riêng
-    subprocess.call(["python", "geometry_app.py"])
-
 # Tạo cửa sổ chính
 root = tk.Tk()
 root.config(bg='lightblue')
@@ -26,9 +22,6 @@ button_basic_calculator.pack()
 
 button_analysis_app = tk.Button(root, text="Ứng dụng hỗ trợ giải tích", command=open_analysis_app,bg='yellow')
 button_analysis_app.pack()
-
-button_geometry_app = tk.Button(root, text="Ứng dụng hỗ trợ hình học", command=open_geometry_app,bg='yellow')
-button_geometry_app.pack()
 
 # Chạy giao diện
 root.mainloop()
