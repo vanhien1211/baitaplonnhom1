@@ -65,24 +65,32 @@ def process_word(exercise):
                 result = "không chia được cho 0"
             else:
                 result = num1 / num2
+        else:
+            messagebox.showinfo("Cảnh báo", "Chỉ nhập cộng, trừ, nhân, chia 2 số")
+            return
         results.append(f"{line} = {result}")
     return results
 
-
 def calculate_and_display_results(text_widget, result_widget):
+    if text_widget.get("1.0", "end-1c") == "":
+        messagebox.showinfo("Cảnh báo", "Không có dữ liệu từ file Word.")
+        return
     content = text_widget.get("1.0", "end-2c")
     results = process_exercises(content)
     result_widget.delete("1.0", "end-1c")
     doc = Document()
-    for i, exercise_results in enumerate(results):
-        paragraph = doc.add_paragraph(f"Bài {i + 1}: \n")
-        for result in exercise_results:
-            paragraph.add_run(result + "\n")
+    if content.find("Bài")!=-1:
+        for i, exercise_results in enumerate(results):
+            paragraph = doc.add_paragraph(f"Bài {i + 1}: \n")
+            for result in exercise_results:
+                paragraph.add_run(result + "\n")
+    else:
+        for result in results:
+            paragraph=doc.add_paragraph(f"{result} \n")
     content_after_process = [paragraph.text for paragraph in doc.paragraphs]
     for line in content_after_process:
         result_widget.insert(tk.END, line + "\n")
     return doc
-
 
 def save_word_file():
     if text_widget.get("1.0", "end-1c") == "":
@@ -96,55 +104,6 @@ def save_word_file():
         doc = calculate_and_display_results(text_widget, result_widget)
         doc.save(file_path)
 
-
-def add():
-    try:
-        num1 = float(text_widget.get("1.0", "1.end"))
-        num2 = float(text_widget.get("2.0", "2.end"))
-    except ValueError:
-        messagebox.showinfo("Thông báo", "Hãy nhập dữ liệu số")
-        return
-    result = num1 + num2
-    label_result.config(text=f"Kết quả: {result}")
-
-
-def subtract():
-    try:
-        num1 = float(text_widget.get("1.0", "1.end"))
-        num2 = float(text_widget.get("2.0", "2.end"))
-    except ValueError:
-        messagebox.showinfo("Thông báo", "Hãy nhập dữ liệu số")
-        return
-    result = num1 - num2
-    label_result.config(text=f"Kết quả: {result}")
-
-
-def multiply():
-    try:
-        num1 = float(text_widget.get("1.0", "1.end"))
-        num2 = float(text_widget.get("2.0", "2.end"))
-    except ValueError:
-        messagebox.showinfo("Thông báo", "Hãy nhập dữ liệu số")
-        return
-    result = num1 * num2
-    label_result.config(text=f"Kết quả: {result}")
-
-
-def divide():
-    try:
-        num1 = float(text_widget.get("1.0", "1.end"))
-        num2 = float(text_widget.get("2.0", "2.end"))
-    except ValueError:
-        messagebox.showinfo("Thông báo", "Hãy nhập dữ liệu số")
-        return
-    if num2 == 0:
-        result = "Không chia được cho 0"
-        label_result.config(text=f"Kết quả: {result}")
-    else:
-        result = num1 / num2
-        label_result.config(text=f"Kết quả: {result}")
-
-
 window = tk.Tk()
 window.title("Máy tính cơ bản")
 window.geometry('390x500')
@@ -155,38 +114,23 @@ window.columnconfigure(1, weight=1)
 window.columnconfigure(2, weight=1)
 
 button_open_file = tk.Button(window, text="Chọn tệp Word", command=open_word_file)
-button_open_file.grid(row=0, column=2, padx=5, pady=5)
+button_open_file.grid(row=0, column=0, padx=10, pady=10)
 
 button_calculate_exercises = tk.Button(window, text="Lưu kết quả", command=save_word_file)
-button_calculate_exercises.grid(row=2, column=2, padx=5, pady=5)
+button_calculate_exercises.grid(row=0, column=2, padx=10, pady=10)
 button_calculate = tk.Button(window, text="Tính toán", command=lambda: calculate_and_display_results(text_widget, result_widget))
-button_calculate.grid(row=1, column=2, padx=5, pady=5)
+button_calculate.grid(row=0, column=1, padx=10,pady=10)
 
-button_add = tk.Button(window, text="Cộng", command=add)
-button_add.grid(row=0, column=0, padx=5, pady=5)
-
-button_subtract = tk.Button(window, text="Trừ ", command=subtract)
-button_subtract.grid(row=0, column=1, padx=5, pady=5)
-
-button_multiply = tk.Button(window, text="Nhân", command=multiply)
-button_multiply.grid(row=1, column=0, padx=5, pady=5)
-
-button_divide = tk.Button(window, text="Chia", command=divide)
-button_divide.grid(row=1, column=1, padx=5, pady=5)
-
-label_result = tk.Label(window, text="Kết quả: ")
-label_result.grid(row=2, column=0, columnspan=2, padx=5, pady=5)
-
-label_word = tk.Label(window, text="Dữ liệu đầu vào:")
-label_word.grid(row=3, column=0, columnspan=2)
+label_word = tk.Label(window, text="Dữ liệu đầu vào(Phép tính 2 số): ")
+label_word.grid(row=1, column=0, columnspan=2, padx=5, pady=5)
 
 text_widget = scrolledtext.ScrolledText(window, width=40, height=10)
-text_widget.grid(row=4, column=0, columnspan=3)
+text_widget.grid(row=2, column=0, columnspan=3, padx=5, pady=5)
 
-label_word = tk.Label(window, text="Dữ liệu word tính toán:")
-label_word.grid(row=5, column=0, columnspan=2)
+label_word = tk.Label(window, text="Dữ liệu sau tính toán:")
+label_word.grid(row=3, column=0, columnspan=2, padx=5, pady=5)
 
 result_widget = scrolledtext.ScrolledText(window, width=40, height=10)
-result_widget.grid(row=6, column=0, columnspan=3)
+result_widget.grid(row=4, column=0, columnspan=3, padx=5, pady=5)
 
 window.mainloop()
