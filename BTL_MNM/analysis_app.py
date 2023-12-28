@@ -58,7 +58,7 @@ def diff():
                     result_text.append(f"Đạo hàm của biểu thức {ham} là: {daoham}\n")
                 else:
                     ham_loi=ham
-                    messagebox.showwarning("Chú ý", f"Biểu thức bị sai {ham_loi}\r\nVui lòng nhập lại hàm này")
+                    messagebox.showwarning("Chú ý", f"Biểu thức bị sai {ham_loi}\r\nVui lòng nhập lại biểu thức này")
             display_result(result_text, result_widget)
     except ValueError:
         messagebox.showwarning("Chú ý", f"Biểu thức bị sai\r\nVui lòng nhập lại hàm này")
@@ -82,11 +82,11 @@ def integrate():
                         tichphan = tichphan1
                     result_text.append(f"Tích phân của biểu thức {ham} là: {tichphan}\n")
                 else:
-                    ham_loi=ham
-                    messagebox.showwarning("Chú ý", f"Biểu thức bị sai {ham_loi}\r\nVui lòng nhập lại hàm này")
+                    ham_loi = ham
+                    messagebox.showwarning("Chú ý", f"Biểu thức bị sai {ham_loi}\r\nVui lòng nhập lại biểu thức này")
             display_result(result_text, result_widget)
     except ValueError:
-        messagebox.showwarning("Chú ý", f"Biểu thức bị sai\r\nVui lòng nhập lại hàm này")
+        messagebox.showwarning("Chú ý", f"Biểu thức bị sai\r\nVui lòng nhập lại biểu thức này")
 
 def limit():
     try:
@@ -108,10 +108,10 @@ def limit():
                     result_text.append(f"Giới hạn của biểu thức {ham} khi x tiến tới 0 là: {ghan}\n")
                 else:
                     ham_loi = ham
-                    messagebox.showwarning("Chú ý", f"Biểu thức bị sai {ham_loi}\r\nVui lòng nhập lại hàm này")
+                    messagebox.showwarning("Chú ý", f"Biểu thức bị sai {ham_loi}\r\nVui lòng nhập lại biểu thức này")
             display_result(result_text, result_widget)
     except ValueError:
-             messagebox.showwarning("Chú ý", f"Biểu thức bị sai\r\nVui lòng nhập lại hàm này")
+             messagebox.showwarning("Chú ý", f"Biểu thức bị sai\r\nVui lòng nhập lại biểu thức này")
 
 
 def simplify():
@@ -134,10 +134,10 @@ def simplify():
                     result_text.append(f"Rút gọn của biểu thức {ham} là: {rutgon}\n")
                 else:
                     ham_loi=ham
-                    messagebox.showwarning("Chú ý", f"Biểu thức bị sai {ham_loi}\r\nVui lòng nhập lại hàm này")
+                    messagebox.showwarning("Chú ý", f"Biểu thức bị sai {ham_loi}\r\nVui lòng nhập lại biểu thức này")
             display_result(result_text, result_widget)
     except ValueError:
-        messagebox.showwarning("Chú ý", f"Biểu thức bị sai\r\nVui lòng nhập lại hàm này")
+        messagebox.showwarning("Chú ý", f"Biểu thức bị sai\r\nVui lòng nhập lại biểu thức này")
 
 def save_to_word_file():
     global result_text
@@ -154,6 +154,7 @@ def save_to_word_file():
 window = tk.Tk()
 window.title("Ứng dụng hỗ trợ môn giải tích")
 window.geometry('390x500')
+window.config(bg='pink')
 window.resizable(width=False, height=False)
 
 window.columnconfigure(0, weight=1)
@@ -161,31 +162,31 @@ window.columnconfigure(1, weight=1)
 window.columnconfigure(2, weight=1)
 
 
-tdaoham = tk.Button(window, text="Tính đạo hàm", command=diff)
+tdaoham = tk.Button(window, text="Tính đạo hàm", command=diff,bg='lightblue')
 tdaoham.grid(row = 0, column =0, padx=5, pady=5)
 
-ttichphan = tk.Button(window, text="Tính tích phân", command=integrate)
+ttichphan = tk.Button(window, text="Tính tích phân", command=integrate,bg='lightblue')
 ttichphan.grid(row = 0, column =1, padx=5, pady=5)
 
-tghan = tk.Button(window, text="Tính giới hạn", command=limit)
+tghan = tk.Button(window, text="Tính giới hạn", command=limit,bg='lightblue')
 tghan.grid(row = 1, column =0, padx=5, pady=5)
 
-trutgon = tk.Button(window, text="Rút gọn biểu thức", command=simplify)
+trutgon = tk.Button(window, text="Rút gọn biểu thức", command=simplify,bg='lightblue')
 trutgon.grid(row = 1, column =1, padx=5, pady=5)
 
-button = tk.Button(window, text="Chọn tệp Word", command=open_file_dialog)
+button = tk.Button(window, text="Chọn tệp Word", command=open_file_dialog,bg='lightblue')
 button.grid(row = 0, column =2, padx=5, pady=5)
 
-button2 = tk.Button(window, text="Lưu kết quả", command=save_to_word_file)
+button2 = tk.Button(window, text="Lưu kết quả", command=save_to_word_file,bg='lightblue')
 button2.grid(row = 1, column =2, padx=5, pady=5)
 
-label_word = tk.Label(window, text="Dữ liệu bài toán :")
+label_word = tk.Label(window, text="Dữ liệu bài toán :",bg='pink')
 label_word.grid(row=2, column=0, columnspan=2)
 
 text_widget = scrolledtext.ScrolledText(window, width=40, height=10)
 text_widget.grid(row=3, column=0, columnspan=5)
 
-label_result = tk.Label(window, text="Kết quả bài toán :")
+label_result = tk.Label(window, text="Kết quả bài toán :",bg='pink')
 label_result.grid(row=4, column=0, columnspan=2)
 
 result_widget = scrolledtext.ScrolledText(window, width=40, height=10)
