@@ -58,10 +58,10 @@ def diff():
                     result_text.append(f"Đạo hàm của biểu thức {ham} là: {daoham}\n")
                 else:
                     ham_loi=ham
-                    raise ValueError("Hãy nhập biểu thức với các chữ số và biến x")
+                    messagebox.showwarning("Chú ý", f"Biểu thức bị sai {ham_loi}\r\nVui lòng nhập lại hàm này")
             display_result(result_text, result_widget)
     except ValueError:
-        messagebox.showwarning("Chú ý", f"Biểu thức {ham_loi} bị sai\r\nVui lòng nhập lại hàm này")
+        messagebox.showwarning("Chú ý", f"Biểu thức bị sai\r\nVui lòng nhập lại hàm này")
 
 def integrate():
     try:
@@ -83,10 +83,10 @@ def integrate():
                     result_text.append(f"Tích phân của biểu thức {ham} là: {tichphan}\n")
                 else:
                     ham_loi=ham
-                    raise ValueError("Hãy nhập biểu thức với các chữ số và biến x")
+                    messagebox.showwarning("Chú ý", f"Biểu thức bị sai {ham_loi}\r\nVui lòng nhập lại hàm này")
             display_result(result_text, result_widget)
-    except ValueError as e:
-        messagebox.showwarning("Chú ý", f"Biểu thức {ham_loi} bị sai\r\nVui lòng nhập lại hàm này")
+    except ValueError:
+        messagebox.showwarning("Chú ý", f"Biểu thức bị sai\r\nVui lòng nhập lại hàm này")
 
 def limit():
     try:
@@ -108,10 +108,10 @@ def limit():
                     result_text.append(f"Giới hạn của biểu thức {ham} khi x tiến tới 0 là: {ghan}\n")
                 else:
                     ham_loi = ham
-                    raise ValueError("Hãy nhập biểu thức với các chữ số và biến x")
+                    messagebox.showwarning("Chú ý", f"Biểu thức bị sai {ham_loi}\r\nVui lòng nhập lại hàm này")
             display_result(result_text, result_widget)
-    except ValueError as e:
-        messagebox.showwarning("Chú ý", f"Biểu thức {ham_loi} bị sai\r\nVui lòng nhập lại hàm này")
+    except ValueError:
+             messagebox.showwarning("Chú ý", f"Biểu thức bị sai\r\nVui lòng nhập lại hàm này")
 
 
 def simplify():
@@ -134,10 +134,10 @@ def simplify():
                     result_text.append(f"Rút gọn của biểu thức {ham} là: {rutgon}\n")
                 else:
                     ham_loi=ham
-                    raise ValueError("Hãy nhập biểu thức với các chữ số và biến x")
+                    messagebox.showwarning("Chú ý", f"Biểu thức bị sai {ham_loi}\r\nVui lòng nhập lại hàm này")
             display_result(result_text, result_widget)
-    except:
-        messagebox.showwarning("Chú ý", f"Biểu thức {ham_loi} bị sai\r\nVui lòng nhập lại hàm này")
+    except ValueError:
+        messagebox.showwarning("Chú ý", f"Biểu thức bị sai\r\nVui lòng nhập lại hàm này")
 
 def save_to_word_file():
     global result_text
