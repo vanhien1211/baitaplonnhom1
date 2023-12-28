@@ -1,0 +1,7 @@
+1. Phân tích thuật toán phần mềm mở được dùng để phát triển
+- Giải quyết các phép tính cơ bản gồm: cộng, trừ, nhân, chia
+- Nhập được 2 số đầu vào
+2. Ý tưởng cải tiến:
+- Hoàn thiện và thiết kế giao diện cho mã nguồn ban đầu
+- Thêm giao diện người dùng và cải tiến, hoàn thiện các chức năng tính toán cơ bản
+- Thêm chức năng hỗ trợ môn giải tích
