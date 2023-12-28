@@ -10,18 +10,18 @@ def open_analysis_app():
     subprocess.call(["python", "analysis_app.py"])
 
 # Tạo cửa sổ chính
-root = tk.Tk()
-root.config(bg='lightblue')
+window = tk.Tk()
+window.config(bg='lightblue')
 # Thiết lập giao diện chính
-label = tk.Label(root, text="Chọn ứng dụng:",bg='lightgreen')
+label = tk.Label(window, text="Chọn ứng dụng:",bg='lightgreen')
 label.pack()
 
 # Tạo các nút lựa chọn
-button_basic_calculator = tk.Button(root, text="Máy tính cơ bản", command=open_basic_calculator,bg='yellow')
+button_basic_calculator = tk.Button(window, text="Máy tính cơ bản", command=open_basic_calculator,bg='yellow')
 button_basic_calculator.pack()
 
-button_analysis_app = tk.Button(root, text="Ứng dụng hỗ trợ giải tích", command=open_analysis_app,bg='yellow')
+button_analysis_app = tk.Button(window, text="Ứng dụng hỗ trợ giải tích", command=open_analysis_app,bg='yellow')
 button_analysis_app.pack()
 
 # Chạy giao diện
-root.mainloop()
+window.mainloop()
